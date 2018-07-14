@@ -15,16 +15,19 @@ categories = ["MEL",
 
 # Move images to their belonging directory
 for index, row in truth.iterrows():
-    # Create category folders (if they do not already exist)
     for c in categories:
+        # Create category folders (if they do not already exist)
         if not os.path.exists(c):
             os.mkdir(c)
             print("Created folder ", c)
-        if row[c] == 1:
+        if row[c] == 1: # The image is in the category with number 1 in its column
             original_directory = 'ISIC2018_Task3_Training_Input/'
             image = row.image+'.jpg'
             destination = c+'/'+image
             # The image file is moved by this command
-            os.rename(original_directory+image, destination)
-            print("moved %s to %s"%(image, destination))
+            try:
+                os.rename(original_directory+image, destination)
+                print("moved %s to %s"%(image, destination))
+            except Exception as e:
+                print(e)
 
