@@ -19,3 +19,6 @@ for index in range(len(truth)):
 
 # BGR information stored in truth array
 truth['bgr'] = bgr
+
+# Proof that an image cannot be categorized as != 1 diseases at the same time in the dataset
+print("Nb miscategorized images:", len(truth[truth.sum(axis=1) == 1]) - len(truth)) # This prints 0, as expected
