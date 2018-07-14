@@ -1,3 +1,5 @@
+# Use this script to move the images in a folder matching their category
+
 import os
 import pandas as pd
 
