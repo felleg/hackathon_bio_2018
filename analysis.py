@@ -8,14 +8,14 @@ truth = pd.read_csv('ISIC2018_Task3_Training_GroundTruth/ISIC2018_Task3_Training
 # Sample 1% of the data for development because my computer is bad
 truth = truth.sample(frac=0.01)
 
-rgb = []
+bgr = []
 
 # Loop over melanomas
 for index in range(len(truth)):
     if index%100 == 0:
         print(str(index) + ' / ' + str(len(truth)))
     image = truth.iloc[index].image
-    rgb += [cv2.imread('ISIC2018_Task3_Training_Input/'+image+'.jpg')]
+    bgr += [cv2.imread('ISIC2018_Task3_Training_Input/'+image+'.jpg')]
 
-# RGB information stored in truth array
-truth['rgb'] = rgb
+# BGR information stored in truth array
+truth['bgr'] = bgr
